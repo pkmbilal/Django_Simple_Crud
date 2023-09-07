@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            fontFamily: { mont: ['Montserrat', 'sans-serif'] },
+            fontWeight: { normal: '400', bold: '700', extrabold: '900' },
+            extend: {}
+          }
+        }
+      </script>
+    <title>{% block title %}  {% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>
