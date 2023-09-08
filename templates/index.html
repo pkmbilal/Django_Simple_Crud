@@ -1,11 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crud App</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="w-full p-10">
+    <table class="table-auto border border-collapse border-gray-400 w-full text-center">
+        <thead>
+          <tr class="bg-green-200 h-10">
+            <th class="border border-slate-400">ID</th>
+            <th class="border border-slate-400">Name</th>
+            <th class="border border-slate-400">Email</th>
+            <th class="border border-slate-400">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for emp in allEmp %}
+          <tr class="bg-gray-100 h-10">
+            <td class="border border-slate-400">{{emp.id}}</td>
+            <td class="border border-slate-400">{{emp.name}}</td>
+            <td class="border border-slate-400">{{emp.email}}</td>
+            <td class="border border-slate-400">{{emp.phone}}</td>
+          </tr>
+        {% endfor %}  
+        </tbody>
+      </table>
+</div>
+{% endblock %}
