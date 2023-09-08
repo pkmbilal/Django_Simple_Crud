@@ -45,3 +45,32 @@ def delemp(request):
         print(e)
         allEmp = Employee.objects.all()
         return render(request, 'index.html',{'allEmp':allEmp})
+
+def upemp(request):
+    try:
+        if request.method == 'POST':
+            id = request.POST['id']
+            newName = request.POST['name']
+            newEmail = request.POST['email']
+            newPhone = request.POST['phone']
+            empExists = Employee.objects.filter(id=id).exists()
+            if not empExists:
+                messages.info(request, 'Employee not found!!!')
+                return render(request, 'update.html')
+            else:
+                emp = Employee.objects.get(id=id)
+                if Employee.objects.filter(name=newName):
+                    messages.error(request, 'Name already exists!!!')
+                    return render(request, 'update.html') 
+                else:   
+                    emp.name = newName
+                    emp.email = newEmail
+                    emp.phone = newPhone
+                    emp.save()
+                messages.success(request, 'Employee updated successfully.')
+                return render(request, 'update.html')
+        else:
+            return render(request, 'update.html')
+    except Exception as e:
+        print(e)
+        return render(request, 'update.html')
