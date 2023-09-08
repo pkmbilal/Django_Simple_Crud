@@ -19,6 +19,14 @@
     <title>{% block title %}  {% endblock %}</title>
 </head>
 <body>
+  <div class="w-full h-20 flex items-center justify-center bg-pink-200 sticky top-0 z-10">
+    <ul class="flex items-center justify-center gap-2 text-xl font-bold">
+      <li><a href="{% url 'empList' %}" class="py-2 px-6 bg-yellow-200 hover:bg-yellow-400 rounded-3xl">Employee List</a></li>
+      <li><a href="{% url 'addEmployee' %}" class="py-2 px-6 bg-yellow-200 hover:bg-yellow-400 rounded-3xl">Add Employee</a></li>
+      <li><a href="{% url 'updateEmployee' %}" class="py-2 px-6 bg-yellow-200 hover:bg-yellow-400 rounded-3xl">Update Employee</a></li>
+      <li><a href="{% url 'deleteEmployee' %}" class="py-2 px-6 bg-yellow-200 hover:bg-yellow-400 rounded-3xl">Delete Employee</a></li>
+    </ul>
+  </div>
     {% block content %}
 
     {% endblock %}
