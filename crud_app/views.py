@@ -53,20 +53,22 @@ def upemp(request):
             newName = request.POST['name']
             newEmail = request.POST['email']
             newPhone = request.POST['phone']
-            empExists = Employee.objects.filter(id=id).exists()
-            if not empExists:
+            emp = Employee.objects.filter(id=id).first()
+            if not emp:
                 messages.info(request, 'Employee not found!!!')
                 return render(request, 'update.html')
             else:
-                emp = Employee.objects.get(id=id)
-                if Employee.objects.filter(name=newName):
-                    messages.error(request, 'Name already exists!!!')
-                    return render(request, 'update.html') 
-                else:   
-                    emp.name = newName
+                if newName:
+                    if Employee.objects.filter(name=newName):
+                        messages.error(request, 'Name already exists!!!')
+                        return render(request, 'update.html') 
+                    else:
+                        emp.name = newName
+                if newEmail:
                     emp.email = newEmail
+                if newPhone:
                     emp.phone = newPhone
-                    emp.save()
+                emp.save()
                 messages.success(request, 'Employee updated successfully.')
                 return render(request, 'update.html')
         else:
